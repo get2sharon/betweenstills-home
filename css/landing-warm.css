@@ -1,0 +1,534 @@
+/* ── דף הבית הסטטי של betweenstills.com. ──────────────────────────────────
+   נגזרת של landing-warm.css של המוצר, בלי המקטעים שירדו (מדריך, מחיר, פרטיות,
+   מתג שפה). נתיב הפונט יחסי. בסוף הקובץ: שורת יצירת הקשר והפוטר.
+   ───────────────────────────────────────────────────────────────────────── */
+/* ── פונט אחד לכל הדף. Heebo, מהקובץ שלנו, ציר משקל מלא 100–900.
+      אין Google Fonts, אין משפחה שנייה, אין סריף תצוגה. ───────────────── */
+@font-face{
+  font-family:"Heebo";
+  src:url("../fonts/Heebo.woff2") format("woff2");
+  font-weight:100 900; font-style:normal; font-display:swap;
+}
+
+/* ── הטוקנים ─────────────────────────────────────────────────────────────
+   רקע לבן. שני פסים בהירים חמימים. מקטע כהה אחד בסוף.
+
+   --accent  #A8431F — ענבר שרוף. זה הזהב שכבר קיים במוצר (#E9B978, גוון 33°)
+   מוחשך עד שהוא עומד על לבן: 6.0:1 מול לבן, בשני הכיוונים — גם כטקסט על לבן
+   וגם כלבן על גבי הכפתור. חם, לא קריר כמו הירוק של Echoes, וממשיך צבע
+   שהמוצר כבר מדבר בו במקום להמציא מותג שני.                                */
+:root{
+  --ink:#1C1714;          /* לא שחור */
+  --ink-2:#5D544C;        /* 5.9:1 על לבן */
+  --ink-3:#6F665D;        /* כיתוב משני. #7A7067 נתן 4.47 על הפס הבהיר, מתחת לתקן */
+  --line:#E8E1D9;
+  --tint:#FAF5F0;         /* הפס הבהיר */
+  --tint-2:#F3EBE3;
+  --dark:#1A1510;         /* מקטע כהה אחד */
+  --dark-2:#2A231C;
+  --on-dark:#F6F1EC;
+  --accent:#A8431F;
+  --accent-hover:#8E3615;
+  --accent-soft:#FBEFE8;
+  --r:12px;
+  --wrap:1180px;
+  --gut:clamp(20px,4vw,40px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:#FFF; color:var(--ink);
+  font-family:"Heebo",system-ui,sans-serif;
+  font-size:18px; line-height:1.65; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block; max-width:100%}
+a{color:inherit}
+
+/* ── הסולם. שבעה גדלים, משפחה אחת, שלושה משקלים. ───────────────────────── */
+h1,h2,h3{margin:0; font-weight:700; letter-spacing:-.015em}
+h1{font-size:clamp(38px,5.3vw,76px); line-height:1.0}
+h2{font-size:clamp(30px,3.6vw,48px); line-height:1.08}
+h3{font-size:26px; line-height:1.2}
+.lead{font-size:20px; line-height:1.6; color:var(--ink-2); margin:14px 0 0; max-width:62ch}
+p{margin:0}
+.tiny{font-size:16px; line-height:1.5; color:var(--ink-3)}
+
+.wrap{max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gut)}
+.blk{padding-block:clamp(56px,7vw,96px)}
+.blk.tint{background:var(--tint)}
+.blk.tint + .blk.tint{padding-top:0}
+
+/* כל מקטע פותח בשורה שאומרת איפה אנחנו ולמה */
+.eyebrow{
+  display:block; font-size:16px; font-weight:500; letter-spacing:.06em;
+  color:var(--accent); margin-bottom:10px;
+}
+
+/* ── כפתורי גלולה. אחד בלבד, ריפוד נדיב. ───────────────────────────────── */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  font:inherit; font-size:20px; font-weight:500; text-decoration:none;
+  padding:16px 34px; border-radius:9999px; border:0;
+  background:var(--accent); color:#FFF; cursor:pointer;
+  transition:background .15s;
+}
+.btn:hover{background:var(--accent-hover)}
+.btn:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+.btn.sm{font-size:16px; padding:10px 20px}
+.btn.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{background:var(--tint)}
+.btn.light{background:#FFF; color:var(--accent)}
+.btn.light:hover{background:var(--tint)}
+.btn.light:focus-visible{outline-color:#FFF}
+
+/* ── הסרגל ──────────────────────────────────────────────────────────────── */
+nav{
+  position:sticky; top:0; z-index:20; background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+nav .in{
+  max-width:var(--wrap); margin-inline:auto; padding:0 var(--gut);
+  height:68px; display:flex; align-items:center; gap:28px;
+}
+.brand{font-size:20px; font-weight:700; letter-spacing:-.01em; white-space:nowrap}
+nav .links{display:flex; gap:24px; font-size:16px; font-weight:500}
+nav .links a{text-decoration:none; color:var(--ink-2)}
+nav .links a:hover{color:var(--accent)}
+nav .sp{flex:1}
+
+/* ── הראש. ההוכחה במסך הראשון: המילים תופסות את הרבע העליון, ומתחתיהן
+      הסרט שכבר מתנגן. גובה הסרט חסום ב-vh כדי שגם הכפתור שמתחתיו
+      יישאר בתוך המסך הראשון בכל גובה חלון. ─────────────────────────────── */
+.hero{padding:clamp(18px,2.4vh,28px) 0 clamp(40px,5vw,64px)}
+.hero .wrap{max-width:1040px}
+/* ── העמודה שמחזיקה את כל הראש, והיא גם רוחב הסרט.
+   max-height על הסרט חתך סרט 16:9 לקופסה של 2.4:1 בחלון נמוך — object-fit:cover
+   חותך, הוא לא מקטין. אז הגובה הזמין קובע כאן את הרוחב, היחס נשמר, והכותרת
+   חולקת קצה עם הסרט בכל מידה. 360px הוא כל מה שיושב מעל הסרט ומתחתיו. */
+.hero .col{
+  width:min(1000px, 100%, calc((100vh - 380px) * 16 / 9));
+  margin-inline:auto; container-type:inline-size;
+}
+/* הכותרת נמדדת מול העמודה, לא מול החלון. במאה פיקסלים השורה הזו רחבה 1123px,
+   כלומר 11.23 כפול הגודל, אז 8.9% מרוחב העמודה הוא בדיוק שורה אחת שנכנסת.
+   עם vw היא נשברה לשתי שורות ב-1366×768 והוציאה את הכפתור מהמסך. */
+.hero h1{font-size:clamp(38px, 8.9cqw, 76px)}
+.hero h1 .ac{color:var(--accent)}
+/* שורה אחת ברוחב הרחב. הקאפ ב-ch דחף אותה לשתי שורות ודחק את הסרט למטה. */
+.hero .sub{font-size:20px; color:var(--ink-2); margin:12px 0 0; max-width:760px}
+
+.film{
+  position:relative; margin:clamp(14px,1.8vh,24px) 0 0;
+  width:100%; aspect-ratio:16/9;
+  border-radius:var(--r); overflow:hidden; background:var(--tint-2);
+}
+.film video{width:100%; height:100%; object-fit:cover}
+/* כפתור ההשהיה — רקע לבן אטום, לא שקוף, כדי שהניגודיות לא תלויה בפריים */
+.pausebtn{
+  position:absolute; inset-block-end:12px; inset-inline-start:12px;
+  display:inline-flex; align-items:center; gap:8px;
+  font:inherit; font-size:16px; font-weight:500;
+  background:#FFF; color:var(--ink); border:0; cursor:pointer;
+  padding:8px 16px; border-radius:9999px;
+}
+.pausebtn:hover{color:var(--accent)}
+.pausebtn:focus-visible{outline:3px solid #FFF; outline-offset:2px}
+.hero .row{
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  margin-top:clamp(18px,2.4vh,26px);
+}
+.hero .cap{font-size:16px; color:var(--ink-3)}
+
+figcaption{margin-top:12px; font-size:16px; line-height:1.5; color:var(--ink-3)}
+
+/* ── שתי תמונות נכנסות, קטע אחד יוצא — סרט הפילם ─────────────────────────
+   מ-mech-1b-big, כמו שאושר. הקטע הוא 540, בדיוק הרזולוציה של
+   example-1-pair.mp4 ולא מעבר, והפריימים שבקצוות 285. לכן הרצועה רחבה
+   מעמודת הטקסט — 1340 מול 1180: בתוך מסילה של 1180 הקטע היה יורד מתחת
+   ל-540 ומאבד חדות. זה גם מה שהמקטע רוצה — הציר הוא הדבר הגדול כאן.
+
+   שינוי אחד נדרש בהטמעה: בסקיצה העצמאית הרקע היה לבן והסרט ישב על tint.
+   כאן המקטע הוא פס ה-tint של הדף, אז כל הסולם ירד דרגה אחת — הסרט אל
+   tint-2 וחורי הסנכרון אל tint — ואותו הפרש בדיוק נשמר בין השלושה.
+   ההדפסים נשארים לבנים, ועכשיו הם בולטים מהסרט יותר מקודם ולא פחות.  */
+.filmwrap{
+  --frame:min(285px,20.5vw);        /* רוחב ההדפס כולו, כולל השוליים הלבנים */
+  --clip:min(540px,39vw);           /* 540 = הרזולוציה של הקובץ. לא מעבר. */
+  --gap:clamp(12px,2.4vw,46px);
+  --mat:clamp(8px,.95vw,15px);      /* השוליים הלבנים של ההדפס */
+  --pad:clamp(14px,1.6vw,22px);
+  --perf:11px;
+  --strip:var(--tint-2);            /* גוף הסרט */
+  --hole:var(--tint);               /* חור הסנכרון = גוון הפס שמאחוריו */
+  max-width:1340px; margin-inline:auto; padding-inline:var(--gut);
+  /* אותם 40 של .rig, .fb-stage ו-.pairs: המרווח בין הכותרת לתוכן המקטע */
+  margin-top:clamp(24px,2.6vw,40px);
+}
+.strip{
+  position:relative; border-radius:var(--r); background:var(--strip);
+  box-shadow:inset 0 0 0 1px var(--line);
+  padding:calc(var(--pad) + var(--perf)) var(--pad);
+}
+/* חורי הסנכרון. שתי שורות, למעלה ולמטה, בשוליים של הסרט. */
+.strip::before,.strip::after{
+  content:""; position:absolute; inset-inline:var(--pad); height:var(--perf);
+  background:repeating-linear-gradient(to right,
+    var(--hole) 0 13px, transparent 13px 28px);
+  border-radius:2px;
+}
+.strip::before{top:7px}
+.strip::after{bottom:7px}
+
+/* שתי שורות: הפריימים למעלה והכיתוב מתחתיהם. בשורה אחת הכיתוב היה דוחף
+   כל פריים למעלה בשיעור אחר, ואז מרכזי שלושת הפריימים לא היו על גובה אחד
+   והמסילה הייתה חוצה את התמונות ולא עוברת במרכזן. */
+.lane{
+  position:relative; z-index:1;
+  display:grid;
+  grid-template-columns:var(--frame) 1fr var(--frame);
+  grid-template-rows:var(--clip) auto;
+  column-gap:var(--gap);
+  align-items:center; justify-items:center;
+}
+
+/* ההדפס: שוליים לבנים, שוליים תחתונים עמוקים מעט כמו בהדפס אמיתי, פינות
+   חדות לתמונה עצמה וצל רך שמרים אותו מהסרט. שני הקצוות נקראים כשתי תמונות
+   מודפסות שהונחו, בזמן שהקטע באמצע נשאר צג ולא נייר. */
+.print{
+  position:relative; z-index:1; grid-row:1; width:var(--frame);
+  background:#FFF; border-radius:3px;
+  padding:var(--mat) var(--mat) calc(var(--mat) * 1.3);
+  box-shadow:
+    0 0 0 1px rgba(28,23,20,.05),
+    0 1px 2px rgba(28,23,20,.06),
+    0 12px 24px -10px rgba(28,23,20,.26);
+}
+.print img{width:100%; aspect-ratio:1; object-fit:cover; background:var(--line)}
+
+/* הקטע. בלי מסגרת הדפס, בכוונה: הוא הדבר החי במקטע. */
+.clipbox{
+  position:relative; z-index:1; grid-row:1; grid-column:2;
+  width:var(--clip); max-width:100%;
+  aspect-ratio:1; border-radius:10px; overflow:hidden;
+  background:var(--line); box-shadow:0 0 0 2px var(--accent);
+}
+.clipbox video{width:100%; height:100%; object-fit:cover}
+
+.fcap{grid-row:2; margin-top:12px; text-align:center;
+      font-size:18px; line-height:1.45; color:var(--ink-3); align-self:start}
+.fcap b{display:block; font-size:20px; font-weight:700; color:var(--ink);
+        white-space:nowrap}
+.fcap.clipc{grid-column:2; font-size:20px}
+.fcap.clipc b{font-size:26px; line-height:1.2; margin-bottom:2px; white-space:normal}
+
+/* המסילה נמתחת בדיוק ממרכז הפריים הראשון אל מרכז האחרון, בגובה מרכז שורת
+   הפריימים, כך שהמילוי יוצא מהתמונה הראשונה ונעצר בשנייה. היא רצה מאחורי
+   ההדפסים, ולכן היא נראית נכנסת אל תוך התמונה. */
+.rail{
+  position:absolute; z-index:0; height:3px; border-radius:2px;
+  background:var(--line);
+  top:calc(var(--clip)/2 - 1.5px);
+  inset-inline:calc(var(--frame)/2);
+}
+.rail .fill{position:absolute; inset-block:0; inset-inline-start:0; border-radius:2px;
+            width:calc(var(--p,0) * 100%); background:var(--accent)}
+/* ראש הניגון: קו שסורק את גובה הפריימים, כמו תריס מצלמה, והנקודה שלו
+   יושבת על המסילה עצמה ולא מרחפת מעליה. */
+.head{
+  position:absolute; z-index:2; top:0; height:var(--clip); width:2px;
+  background:var(--accent); opacity:.45; pointer-events:none;
+  inset-inline-start:calc(var(--frame)/2 + (100% - var(--frame)) * var(--p,0));
+  margin-inline-start:-1px;
+}
+.head::before{
+  content:""; position:absolute; top:calc(var(--clip)/2 - 7px);
+  inset-inline-start:-6px;
+  width:14px; height:14px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 0 3px var(--strip);
+}
+
+/* סולם הזמן. מספרים אמיתיים: הקטע הוא חמש שניות. המספרים מתיישרים אל
+   מרכזי שני הפריימים, אותו חישוב של המסילה. */
+.scale{
+  display:grid; grid-template-columns:var(--frame) 1fr var(--frame);
+  column-gap:var(--gap);
+  margin:12px 0 0; padding-inline:var(--pad);
+  font-size:18px; color:var(--ink-3); font-variant-numeric:tabular-nums;
+}
+.scale span{justify-self:center}
+.scale span:last-child{grid-column:3}
+.clipbox .pausebtn{z-index:3}
+
+/* ── שלושת השלבים ──────────────────────────────────────────────────────────
+   מ-steps-a2, כמו שאושר. ההכלה היא העניין: ארבעת המסכים הם לוח מקונן בתוך
+   המסגרת המצוירת של הכרטיס הראשון, עם שוליים מכל צד, ולכן אין יותר כותרת
+   שאומרת "ארבעת המסכים של שלב התמונות" — הגיאומטריה אומרת את זה.
+   שלושת הכרטיסים ברוחב זהה, ראש זהה וקו מבטא עליון בשלושתם, כדי שהעין
+   תספור שלושה לפני שהיא יורדת אל הארבעה. רק אז הראשון נפתח.
+   המקטע הזה הוא מקטע לבן בדף, בדיוק כמו הסקיצה העצמאית, ולכן הסולם הפנימי
+   נשאר כפי שהוא: הלוח ב-tint והמסגרת שלו ב-tint-2. אין הזזת דרגה כאן.
+   כל מחלקה חדשה בתחילית st-, כדי שלא תיפול על שם שכבר קיים בדף. ──────── */
+.st-grid{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:clamp(16px,2vw,24px); margin-top:clamp(28px,3vw,40px); align-items:start;
+}
+.st-card{
+  background:#FFF; border:1px solid var(--line); border-top:3px solid var(--accent);
+  border-radius:var(--r); padding:clamp(18px,2vw,26px);
+}
+/* הראש: המילה שסופרת, ותגית מי עושה. אותו מבנה בדיוק בשלושה. */
+.st-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  min-height:28px;
+}
+.st-ord{font-size:16px; font-weight:500; color:var(--ink-3); letter-spacing:.02em}
+.st-who{
+  font-size:16px; font-weight:500; line-height:1; white-space:nowrap;
+  border-radius:9999px; padding:5px 12px;
+  border:1px solid var(--line); color:var(--ink-3); background:#FFF;
+}
+.st-card.st-ours .st-who{background:var(--accent); border-color:var(--accent); color:#FFF}
+.st-name{font-size:26px; line-height:1.2; margin:8px 0 6px}
+/* גובה מינימלי לפסקה: שלושת הראשים נקראים כרצועה אחת ישרה. */
+.st-t{font-size:18px; line-height:1.55; color:var(--ink-2); min-height:calc(2 * 1.55em)}
+
+/* ── ארבעת המסכים, מקוננים בתוך הכרטיס הראשון ──────────────────────────
+   שוליים מכל ארבעת הצדדים כלפי פנים המסגרת: זה מה שאומר "בתוך", בלי מילה.
+   כותרות 18 ולא 26 — הארבעה נמוכים בדרגה מהשלושה שמעליהם.
+   השמות והמספרים הם אלה שבסרגל שבמוצר (_fix_flowbar.html). */
+.st-nest{
+  list-style:none; margin:clamp(16px,1.8vw,20px) 0 0; padding:clamp(14px,1.6vw,18px);
+  background:var(--tint); border:1px solid var(--tint-2); border-radius:10px;
+  display:grid; gap:clamp(12px,1.4vw,16px); align-items:start;
+}
+.st-nest li{display:grid; grid-template-columns:auto 1fr; column-gap:10px; align-items:center}
+.st-nest i{
+  grid-row:1; grid-column:1; font-style:normal; font-size:16px; font-weight:700; line-height:1;
+  width:26px; height:26px; border-radius:9999px;
+  background:#FFF; color:var(--accent); box-shadow:inset 0 0 0 1.5px var(--accent);
+  display:flex; align-items:center; justify-content:center;
+}
+.st-nest b{grid-row:1; grid-column:2; font-size:18px; font-weight:700; line-height:1.3}
+.st-nest span{
+  grid-row:2; grid-column:2; font-size:16px; line-height:1.45; color:var(--ink-2); margin-top:2px;
+}
+
+/* ── עשרים שניות, ארבעה קטעים ─────────────────────────────────────────────
+   מ-film-b, כמו שאושר. ארבעה תאים על משטח אחד, והקטע שמתנגן הוא החלון
+   שנוסע ביניהם ומשאיר אחריו הדפס דומם. אין פס זמן ואין שורה שאומרת
+   "אלה ארבעת הקטעים" — ארבעה תאים שאחד מהם חי אומרים את זה לבד.
+
+   שני דברים שהוכרעו שם במידה ולא בעין, ונשמרים כאן כלשונם:
+   (1) יש ווידאו אחד בלבד, והוא לא זז בעץ ה-DOM — רק התא שהוא תופס ברשת
+       משתנה. כך הסרט רץ מ-0 עד 20 בלי תפר בזמן שהפריסה מתחלפת.
+   (2) כל ארבע העמודות fr. px מול fr לא מתאינטרפל, והמעבר היה קופץ.
+   שלושת ההדפסים נצבעים פעם אחת מהקובץ עצמו — אפס נכסים חדשים.
+
+   שני שינויים נדרשו בהטמעה, ושניהם מדידים:
+   • המקטע הוא פס tint של הדף, אז הסולם הפנימי יורד דרגה בדיוק כמו בסרט
+     הפילם מעליו: המשטח אל tint-2 והרקעים שמתחת לווידאו אל line.
+     ההדפסים נשארים לבנים, ועכשיו הם בולטים מהמשטח יותר ולא פחות.
+   • --fb-lead הוא 6 ולא 4: ברוחב 1340 של הדף זה חלון של 768 פיקסלים
+     במקום 658, ועדיין מתחת ל-1280 של הקובץ. מתחת ל-1100 הוא חוזר ל-4,
+     כי שם 6 הוריד את ההדפס אל מתחת ל-90 פיקסלים. ארבעת התאים לא זזו.
+
+   כל מחלקה בתחילית fb-. כפתור ההשהיה הוא .pausebtn של הדף, מחווט דרך
+   אותו wire() כמו שני הסרטים האחרים, כדי שכל כפתור ישלוט בסרט שלו בלבד. */
+.fb-stage{
+  max-width:1340px; margin-inline:auto; padding-inline:var(--gut);
+  margin-top:clamp(24px,2.6vw,40px);
+}
+.fb-band{
+  --fb-lead:6;
+  --fb-gap:clamp(10px,1.5vw,24px);
+  --fb-mat:clamp(7px,.8vw,12px);
+  --fb-sq:clamp(88px,13vw,200px);
+  padding:clamp(12px,1.6vw,22px);
+  border-radius:var(--r); background:var(--tint-2);
+  box-shadow:inset 0 0 0 1px var(--line);
+}
+.fb-strip{
+  display:grid; gap:var(--fb-gap); align-items:center;
+  grid-template-columns:6fr 1fr 1fr 1fr;
+  transition:grid-template-columns .6s cubic-bezier(.3,.75,.2,1);
+}
+
+/* החלון החי. 16:9, טבעת מבטא וצל שמרימים אותו מעל המשטח. */
+.fb-live{
+  position:relative; width:100%; aspect-ratio:16/9; min-width:0;
+  border-radius:10px; overflow:hidden; background:var(--line);
+  box-shadow:0 0 0 2px var(--accent), 0 22px 44px -26px rgba(28,23,20,.55);
+}
+.fb-live video{width:100%; height:100%; object-fit:cover}
+.fb-live .pausebtn{z-index:3}
+
+/* ההדפס הדומם. אותה שפה של ההדפסים בסרט הפילם: שוליים לבנים, שוליים
+   תחתונים עמוקים מעט, פינות חדות לתמונה וצל רך.
+   הרוחב נחסם ב---fb-sq ולא רק ב-100% של העמודה. בלעדיו ההדפס שמסתתר
+   מתחת לחלון החי יושב בעמודה הרחבה ומותח את גובה הרצועה. */
+.fb-still{
+  position:relative; width:min(100%, var(--fb-sq)); min-width:0; justify-self:center;
+  background:#FFF; border-radius:3px;
+  padding:var(--fb-mat) var(--fb-mat) calc(var(--fb-mat) * 1.35);
+  box-shadow:
+    0 0 0 1px rgba(28,23,20,.05),
+    0 1px 2px rgba(28,23,20,.06),
+    0 12px 24px -10px rgba(28,23,20,.26);
+}
+.fb-still canvas{display:block; width:100%; aspect-ratio:1; background:var(--line)}
+/* display:none ולא opacity:0 — הדפס שדוהה מעל החלון החי נראה כמו רוח
+   רפאים על הווידאו בכל מעבר. ההופעה בתא שהתפנה לא צריכה הנפשה משלה:
+   העמודה ממילא מתכווצת מתחתיה, וזו התנועה. */
+.fb-still.is-hidden{display:none}
+
+/* המספר יושב על התא שהוא מונה, ולא בשורה נפרדת מתחת. */
+.fb-tag{
+  position:absolute; z-index:2;
+  display:flex; align-items:center; justify-content:center;
+  width:28px; height:28px; border-radius:50%;
+  background:#FFF; color:var(--ink-3);
+  font-size:16px; font-weight:700; line-height:1;
+  font-variant-numeric:tabular-nums;
+  box-shadow:0 1px 3px rgba(28,23,20,.18);
+}
+.fb-still .fb-tag{top:calc(var(--fb-mat) + 6px); inset-inline-start:calc(var(--fb-mat) + 6px)}
+.fb-live  .fb-tag{top:12px; inset-inline-start:12px; background:var(--accent); color:#FFF}
+.fb-still.is-done .fb-tag{background:var(--accent); color:#FFF}
+
+/* פס ההתקדמות של הקטע הנוכחי, על השפה התחתונה של החלון החי בלבד.
+   הוא אומר כמה נשאר לקטע הזה, ולכן הנסיעה לתא הבא לא מפתיעה. */
+.fb-bar{position:absolute; inset-block-end:0; inset-inline:0; height:4px;
+        background:rgba(255,255,255,.4)}
+.fb-bar i{position:absolute; inset-block:0; inset-inline-start:0;
+          width:calc(var(--fb-p,0) * 100%); background:var(--accent)}
+
+
+/* ── המקטע הכהה היחיד: התיקייה, והסגירה ───────────────────────────────── */
+.end{background:var(--dark); color:var(--on-dark); padding-block:clamp(56px,7vw,92px)}
+.end h2{color:#FFF}
+.end .ac{color:#EDA47F}            /* הענבר מוחזר לבהיר כדי לעמוד על הכהה: 7.1:1 */
+.end .lead{color:#CBBFB4}
+.folder{display:grid; grid-template-columns:repeat(8,1fr); gap:10px; margin-bottom:40px}
+.folder figure{margin:0}
+.folder .box{
+  aspect-ratio:1; border-radius:10px; overflow:hidden; background:var(--dark-2);
+}
+/* פנים יושבות בשליש העליון, אז חיתוך לריבוע מהמרכז קוצץ ראשים. */
+.folder img{width:100%; height:100%; object-fit:cover; object-position:center 32%}
+.end .row{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:28px}
+.end .cap{font-size:16px; color:#A79B90}
+
+/* הפוטר עבר ל-_site_footer.html, עם הכללים שלו: הוא משותף לדף הבית ולרשימת
+   הפרויקטים, ועותק שני של הכללים כאן הוא מה שמפצל אותם. */
+
+/* ── צר ────────────────────────────────────────────────────────────────── */
+@media (max-width:1100px){
+  /* שלושת השלבים זה מתחת לזה, עדיין ברוחב זהה ובראש זהה,
+     ולוח המסכים נפתח לשתי עמודות כי יש רוחב. */
+  .st-grid{grid-template-columns:1fr}
+  .st-t{min-height:0}
+  .st-nest{grid-template-columns:1fr 1fr; column-gap:clamp(14px,2vw,22px)}
+  /* מתחת ל-1024 שני הזוגות נערמים זה מתחת לזה, ואז הרוחב משתחרר:
+     התצלום עולה מ-141 (ארבעה בשורה ב-768) ל-260. ב-1100 עדיין יש
+     רוחב לארבעה, ולכן הגבול כאן הוא 1023 ולא 1100. */
+  .folder{grid-template-columns:repeat(4,1fr)}
+  /* ב-6 ההדפס ירד ל-84 פיקסלים כאן. 4 מחזיר אותו ל-134 והחלון ל-534.
+     ה-JS קורא את המספר הזה, ולא מחזיק עותק שני שלו. */
+  .fb-band{--fb-lead:4}
+}
+@media (max-width:900px){
+  nav .links{display:none}
+}
+/* ── הסרט במסך צר. הוא נשאר סרט, רק מתכווץ: שני ההדפסים בקצוות קטנים,
+      והקטע ממלא את כל המרווח שביניהם — כלומר הקטע הוא ממש המרחק.
+      כאן הרוחב הוא התקרה ולא הגובה: ב-375 המסילה הפנימית היא 343,
+      והסרט לוקח 338 מתוכה. ─────────────────────────────────────────── */
+@media (max-width:760px){
+  .filmwrap{
+    --frame:min(20.5vw,130px);
+    --clip:min(46vw,300px);
+    --gap:clamp(6px,1.6vw,22px);
+    --mat:6px;
+    --pad:8px; --perf:9px;
+    padding-inline:8px;
+  }
+  .fcap{margin-top:7px; font-size:15px}
+  /* הכיתוב חוזר להישבר. בעמודה של 77 פיקסלים שורה אחת ארוכה גולשת
+     מהמסך ויוצרת גלילה אופקית, ושתי שורות קצרות עדיף על זה. */
+  .fcap b{font-size:15px; white-space:normal}
+  .fcap.clipc{font-size:16px}
+  .fcap.clipc b{font-size:20px}
+  /* במסך צר אין מקום לתיאור התמונה מתחת להדפס של 77 פיקסלים.
+     השם לבדו מספיק, והכותרת הראשית כבר אומרת מה נכנס ומה יוצא. */
+  .fcap:not(.clipc) span{display:none}
+  .scale{font-size:15px}
+  /* כפתור עם מילה תפס 60 אחוז מרוחב הקטע ובלע את מה שהוא אמור לשלוט בו.
+     במסך צר נשאר רק הסמל, בעיגול של 34 פיקסלים — מעל מינימום מטרת
+     המגע — והשם נשאר ב-aria-label. */
+  .clipbox .pausebtn{padding:0; width:34px; height:34px; justify-content:center;
+                     inset-block-end:8px; inset-inline-start:8px}
+  .clipbox .pausebtn #pauseWord2{display:none}
+}
+/* ── ארבעת התאים במסך צר. שורה של ארבעה לא קיימת ב-375: החלון היה יוצא
+      ברוחב 70 פיקסלים. במקום זה רשת 2×2, ארבעה תאים שווים ב-16:9,
+      והחי מסומן בטבעת ובצל. עדיין ארבעה, עדיין אחד חי, בלי מילה נוספת. */
+@media (max-width:860px){
+  .fb-stage{padding-inline:16px}
+  .fb-band{--fb-gap:9px; --fb-mat:5px; padding:10px}
+  .fb-strip{grid-template-columns:1fr 1fr !important; transition:none}
+  .fb-still{width:100%; align-self:stretch; display:flex; align-items:center}
+  .fb-still canvas{aspect-ratio:16/9}
+  .fb-tag{width:24px; height:24px}
+  /* אותו טיפול של כפתור ההשהיה בסרט הפילם: רק הסמל, בעיגול של 34
+     פיקסלים, מעל מינימום מטרת המגע, והשם נשאר ב-aria-label. */
+  .fb-live .pausebtn{padding:0; width:34px; height:34px; justify-content:center;
+                     inset-block-end:8px; inset-inline-start:8px}
+  .fb-live .pausebtn #pauseWord3{display:none}
+}
+/* לוח המסכים חוזר לעמודה אחת, והראש של הכרטיס רשאי להישבר לשתי שורות. */
+@media (max-width:620px){
+  .st-nest{grid-template-columns:1fr}
+  .st-head{flex-wrap:wrap}
+}
+@media (max-width:720px){
+  /* בטלפון הסרגל גלש 181px החוצה. נשארים המותג וכפתור אחד. */
+  nav .in{gap:12px; height:60px}
+  .brand{font-size:18px}
+  nav .btn.ghost{display:none}
+}
+@media (max-width:520px){
+  /* גם כפתור ההתחלה יורד מהסרגל: הוא חוזר 200px מתחתיו, בראש עצמו.
+     בלעדיו הסרגל עוד גלש 7px ב-375. */
+  nav .btn{display:none}
+  nav .in{padding-inline:16px}
+  .blk{padding-block:clamp(40px,8vw,60px)}
+  .hero .col{width:100%}
+  .folder{grid-template-columns:repeat(2,1fr)}
+  .hero .btn,.end .btn{width:100%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important}
+}
+
+/* ── יצירת קשר: משפט אחד, ואחריו מייל וטלפון. ───────────────────────────── */
+.say{font-size:20px; line-height:1.5; color:var(--ink-2)}
+.end .say{color:#CBBFB4}
+.btn .ltr{direction:ltr; unicode-bidi:isolate}
+.end .btn.line{background:transparent; color:#FFF; box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+.end .btn.line:hover{background:rgba(255,255,255,.1)}
+.end .btn.line:focus-visible{outline-color:#FFF}
+.end .row{margin-top:8px}
+.hero .row{gap:14px 18px}
+@media (max-width:520px){
+  .hero .row .say{flex-basis:100%}
+  .end .btn.line{width:100%}
+}
+
+/* ── הפוטר ──────────────────────────────────────────────────────────────── */
+.site-foot{padding:28px 0; border-top:1px solid var(--line); font-size:16px; color:var(--ink-3)}
+.site-foot .wrap{display:flex; gap:24px; flex-wrap:wrap; align-items:center}
+.hero .say{font-size:18px}
+.hero .row .btn{font-size:18px; padding:14px 26px}
